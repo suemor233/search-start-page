@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .my-input {
+        @apply border-2 rounded-l-lg box-border p-1 border-white border-opacity-90 w-10/12 focus:shadow-2xl focus:outline-none
+    }
+}
+
