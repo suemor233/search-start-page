@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^8.3.1",
+    "animate.css": "^4.1.1",
     "axios": "^0.27.1",
     "moment": "^2.29.3",
     "reset-css": "^5.0.1",

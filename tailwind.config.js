@@ -13,6 +13,10 @@ module.exports = {
       },
       maxWidth:{
         '200':'48rem'
+      },
+      inset:{
+        '33':'33%',
+        '18':'18%',
       }
 
     },

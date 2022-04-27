@@ -1,3 +1,8 @@
 #keySelect{
     @apply bg-gray-300 -translate-x-1
 }
+
+
+.animate__fadeIn{
+    --animate-duration: 0.2s;
+}

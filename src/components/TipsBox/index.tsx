@@ -12,17 +12,14 @@ export default defineComponent({
     tipsShow: {
       type: Object as PropType<Ref<boolean>>,
       required: true,
-    },
-    inputValue: {
-      type: Object as PropType<Ref<string>>,
-      required: true,
-    },
+    }
   },
   setup(props, { emit }) {
-    const { tips, tipsShow, inputValue } = props
+    const { tips, tipsShow } = props
     let selectLi = -1
 
     const enter = (tip: ITips) => {
+      selectLi = Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1
       document
         .getElementsByTagName('li')
         [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.add(
@@ -67,6 +64,7 @@ export default defineComponent({
     onMounted(() => {
       document.onkeydown = (e) => {
         if (e.code === 'ArrowUp') {
+          e.preventDefault();
           const tipsLi = deleteOld()
           if (selectLi <= 0) {
             selectLi = tipsLi.length - 1
@@ -77,6 +75,8 @@ export default defineComponent({
           }
           emit('selectTips', tipsLi[selectLi].innerText)
         } else if (e.code === 'ArrowDown') {
+          e.preventDefault();
+
           const tipsLi = deleteOld()
           if (selectLi === tipsLi.length - 1) {
             selectLi = -1
@@ -89,10 +89,10 @@ export default defineComponent({
     })
     return () => (
       <>
-        {tips.length > 0 && tipsShow.value ? (
+        {tips.length > 0 && tipsShow.value ?
           <div
             class={
-              'bg-gray-500 w-full rounded-2xl bg-opacity-50 text-white  shadow-2xl absolute top-12 transition duration-1000 ease-in-out'
+              'bg-gray-500 w-full rounded-2xl bg-opacity-50 text-white shadow-2xl absolute top-12 animate__animated animate__fadeIn '
             }
           >
             <ul>
@@ -102,10 +102,15 @@ export default defineComponent({
                     class={
                       'font-sans text-lg  p-2 transition duration-200 ease-in-out'
                     }
-                    onMouseenter={() => enter(tip)}
+                    onMouseenter={() => {
+                      deleteOld()
+                      enter(tip)}}
                     onMouseleave={() => leave(tip)}
+                    onClick={() => {
+                      emit('tipsData', tip.q)
+                      tipsShow.value = false
+                    }}
                     key={tip.sa}
-                    onClick={() => emit('tipsData', tip.q)}
                   >
                     {tip.q}
                   </li>
@@ -113,7 +118,7 @@ export default defineComponent({
               })}
             </ul>
           </div>
-        ) : null}
+        : null}
       </>
     )
   },

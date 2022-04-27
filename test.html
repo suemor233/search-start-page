@@ -4,27 +4,36 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .app {
-            width: 100px;
-            height: 100px;
-            background: antiquewhite;
+        #menu #list {
+            max-height: 0;
+            transition: max-height 0.15s ease-out;
+            overflow: hidden;
+            background: #d5d5d5;
         }
-        .app.hover {
-            background: aquamarine;
+
+        #menu:hover #list {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
         }
-        .app:hover {
-            background: aquamarine;
-        }
+
     </style>
 </head>
 <body>
-<div id="app" class="app hover">
+<div id="menu">
+    <a>hover me</a>
+    <ul id="list">
+        <!-- Create a bunch, or not a bunch, of li's to see the timing. -->
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+    </ul>
 </div>
 
+
 <script>
-    document.getElementById('app').onmouseenter = function () {
-        this.className = 'app'
-    }
+
 </script>
 </body>
 </html>
