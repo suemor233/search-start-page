@@ -97,7 +97,6 @@ export default defineComponent({
           tipsLi[selectLi].id = 'keySelect'
           emit('selectTips', tipsLi[selectLi].innerText)
         }else if (e.code === 'Escape'){
-          console.log('start')
           setTimeout(() => {
             tipsShow.value = false
             emit('isFocus', false)

@@ -62,35 +62,41 @@ export default defineComponent({
       },
     ]
 
-    const keydown = (e: KeyboardEvent) => {
-      if (e.code === 'Enter') {
-        switch (search.value) {
-          case 'google':
-            window.open(
+    const switchSearch = ()=>{
+      switch (search.value) {
+        case 'google':
+          window.open(
               `https://www.google.com/search?q=${inputValue.value}`,
               '_blank',
-            )
-            break
-          case 'duckduckgo':
-            window.open(
+          )
+          break
+        case 'duckduckgo':
+          window.open(
               `https://duckduckgo.com/?q=${inputValue.value}`,
               '_blank',
-            )
-            break
-          case 'bing':
-            window.open(
+          )
+          break
+        case 'bing':
+          window.open(
               `https://www.bing.com/search?q=${inputValue.value}`,
               '_blank',
-            )
-            break
-          case 'baidu':
-            window.open(
+          )
+          break
+        case 'baidu':
+          window.open(
               `https://www.baidu.com/s?wd=${inputValue.value}`,
               '_blank',
-            )
-            break
-        }
+          )
+          break
       }
+    }
+
+    const keydown = (e: KeyboardEvent) => {
+      if (e.code === 'Enter') {
+        switchSearch()
+    }
+
+
     }
     return () => (
       <>
@@ -238,10 +244,7 @@ export default defineComponent({
             tipsShow={tipsShow}
             onTipsData={(tips: string) => {
               inputValue.value = tips
-              window.open(
-                `https://www.baidu.com/s?wd=${inputValue.value}`,
-                '_blank',
-              )
+              switchSearch()
             }}
             onSelectTips={(tips: string) => {
               watchStart = false

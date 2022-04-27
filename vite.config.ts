@@ -9,7 +9,7 @@ export default defineConfig({
       vueJsx()
   ],
   server: {
-    host:'0.0.0.0'
+    port:4443
   },
   resolve: {
     alias: {
