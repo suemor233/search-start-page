@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .app {
+            width: 100px;
+            height: 100px;
+            background: antiquewhite;
+        }
+        .app.hover {
+            background: aquamarine;
+        }
+        .app:hover {
+            background: aquamarine;
+        }
+    </style>
+</head>
+<body>
+<div id="app" class="app hover">
+</div>
+
+<script>
+    document.getElementById('app').onmouseenter = function () {
+        this.className = 'app'
+    }
+</script>
+</body>
+</html>

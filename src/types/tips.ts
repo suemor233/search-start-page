@@ -1,3 +1,5 @@
 export interface ITips {
-    q:string
+    q:string,
+    sa:string,
+    type:string
 }
