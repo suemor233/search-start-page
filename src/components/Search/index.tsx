@@ -106,7 +106,7 @@ export default defineComponent({
           }
         >
           <NPopselect v-model:value={search.value} options={options}>
-            <Icon size="38" class={'z-10 box-border p-0.5  ml-1'}>
+            <Icon size="32" class={'z-10 box-border p-0.5  ml-1'}>
               {search.value === 'google' ? (
                 <svg
                   class="icon"
