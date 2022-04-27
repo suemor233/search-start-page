@@ -3,7 +3,7 @@ import { ITips } from '@/types/tips'
 import './index.css'
 
 export default defineComponent({
-  emits: ['tipsData', 'selectTips'],
+  emits: ['tipsData', 'selectTips','isFocus'],
   props: {
     tips: {
       type: Array as PropType<ITips[]>,
@@ -96,6 +96,12 @@ export default defineComponent({
           selectLi++
           tipsLi[selectLi].id = 'keySelect'
           emit('selectTips', tipsLi[selectLi].innerText)
+        }else if (e.code === 'Escape'){
+          console.log('start')
+          setTimeout(() => {
+            tipsShow.value = false
+            emit('isFocus', false)
+          }, 150)
         }
       }
     })

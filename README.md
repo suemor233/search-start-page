@@ -1,20 +1,24 @@
-# Vite Vue3 TSX Template
+## 一个简单的搜索启始页
 
-This template provide toolchain below:
+使用了以下技术
 
-- Vite
 - Vue3
+- Vite
 - TSX
-- ESLint
-- Prettier
-- Sass
-- VueX
-- Router
-- Axios
+- Tailwindcss
 
-# Usage
+# 开发
 
 ```sh
 pnpm i
 pnpm dev
 ```
+
+# 截图
+
+<p align="middle">
+<img src="https://github.com/Elmge/search-start-page/blob/master/images/image1.jpg" width="1000" alt="界面" />
+<img src="https://github.com/Elmge/search-start-page/blob/master/images/image2.jpg" width="1000" alt="搜索" />
+</p>
+
+

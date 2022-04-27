@@ -8,12 +8,12 @@ import {
   watch,
 } from 'vue'
 
-
 import { Icon } from '@vicons/utils'
 import { getBaiduTip } from '@/api'
 import TipsBox from '@/components/TipsBox'
 import { ITips } from '@/types/tips'
 import { NPopselect } from 'naive-ui'
+import { Close } from '@vicons/ionicons5'
 
 export default defineComponent({
   emits: ['isFocus'],
@@ -23,6 +23,7 @@ export default defineComponent({
     const tipsShow = ref<boolean>(false)
     let firstFocus = false
     let watchStart = true
+
     const search = ref('google')
     watch(inputValue, async () => {
       if (watchStart) {
@@ -61,34 +62,45 @@ export default defineComponent({
       },
     ]
 
-
-    const keydown = (e:KeyboardEvent)=>{
-    if (e.code === 'Enter'){
-      switch (search.value) {
-        case 'google':
-          window.open(`https://www.google.com/search?q=${inputValue.value}`, '_blank',)
-          break
-        case 'duckduckgo':
-          window.open(`https://duckduckgo.com/?q=${inputValue.value}`, '_blank',)
-          break
-        case 'bing':
-          window.open(`https://www.bing.com/search?q=${inputValue.value}`, '_blank',)
-          break
-        case 'baidu':
-          window.open(`https://www.baidu.com/s?wd=${inputValue.value}`, '_blank',)
-          break
+    const keydown = (e: KeyboardEvent) => {
+      if (e.code === 'Enter') {
+        switch (search.value) {
+          case 'google':
+            window.open(
+              `https://www.google.com/search?q=${inputValue.value}`,
+              '_blank',
+            )
+            break
+          case 'duckduckgo':
+            window.open(
+              `https://duckduckgo.com/?q=${inputValue.value}`,
+              '_blank',
+            )
+            break
+          case 'bing':
+            window.open(
+              `https://www.bing.com/search?q=${inputValue.value}`,
+              '_blank',
+            )
+            break
+          case 'baidu':
+            window.open(
+              `https://www.baidu.com/s?wd=${inputValue.value}`,
+              '_blank',
+            )
+            break
+        }
       }
-    }
     }
     return () => (
       <>
         <div
           class={
-            'flex relative max-w-3xl justify-start m-auto top-30% animate__animated animate__bounceInDown'
+            'flex justify-between items-center  relative max-w-3xl justify-start m-auto top-30% animate__animated animate__bounceInDown'
           }
         >
           <NPopselect v-model:value={search.value} options={options}>
-            <Icon size="38" class={'z-10 box-border p-1 ml-1'}>
+            <Icon size="38" class={'z-10 box-border p-0.5  ml-1'}>
               {search.value === 'google' ? (
                 <svg
                   class="icon"
@@ -181,6 +193,7 @@ export default defineComponent({
 
           <input
             type="text"
+            id={'myInput'}
             v-model={inputValue.value}
             onBlur={() =>
               setTimeout(() => {
@@ -199,11 +212,27 @@ export default defineComponent({
             autofocus
             onInput={() => (watchStart = true)}
             placeholder={'请输入内容'}
-            onKeydown={(e)=>keydown(e)}
+            onKeydown={(e) => keydown(e)}
             class={
-              'placeholder-white pl-12 w-full max-w-3xl absolute border-2 bg-gray-500 border-opacity-80 bg-opacity-50 backdrop-blur-md text-2xl font-sans font-extralight text-white rounded-2xl box-border p-1 border-white border-opacity-90 focus:shadow-2xl focus:outline-none'
+              'placeholder-white  px-12 w-full max-w-3xl absolute border-2 bg-gray-500 border-opacity-80 bg-opacity-50 backdrop-blur-md text-2xl font-sans font-extralight text-white rounded-2xl box-border p-1 border-white border-opacity-90 focus:shadow-2xl focus:outline-none'
             }
           />
+          {inputValue.value.length > 0 ? (
+            <div
+              class={'z-50 flex items-center mr-1 cursor-pointer'}
+              onClick={() => {
+                inputValue.value = ''
+                document?.getElementById("myInput")?.focus();
+              }}
+            >
+              <Icon color={'#70757A'} size="36">
+                <Close />
+              </Icon>
+            </div>
+          ) : (
+            ''
+          )}
+
           <TipsBox
             tips={tips}
             tipsShow={tipsShow}
@@ -218,6 +247,7 @@ export default defineComponent({
               watchStart = false
               inputValue.value = tips
             }}
+            onIsFocus={()=>   emit('isFocus', false)}
           />
         </div>
       </>
