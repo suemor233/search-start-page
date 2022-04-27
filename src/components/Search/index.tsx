@@ -32,7 +32,7 @@ export default defineComponent({
 
         return () => (
           <>
-                  <div  class={'flex relative max-w-3xl justify-start m-auto top-33'}>
+                  <div  class={'flex relative max-w-3xl justify-start m-auto top-30% animate__animated animate__bounceInDown'}>
                       <Icon color="#312C80" size="38" class={'z-10 box-border p-1 ml-1'}>
                           <SearchOutline/>
                       </Icon>
@@ -43,6 +43,7 @@ export default defineComponent({
                               tipsShow.value = false
                           },150) }
                           onFocus={()=>tipsShow.value = true}
+                          autofocus
                           onInput={()=>watchStart = true}
                           placeholder={'请输入内容'}
                           onKeydown={(e)=>e.code === 'Enter' ? window.open(`https://www.baidu.com/s?wd=${inputValue.value}`,'_blank') : ''}

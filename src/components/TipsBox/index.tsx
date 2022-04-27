@@ -26,10 +26,16 @@ export default defineComponent({
           'bg-gray-300',
         )
       document
-        .getElementsByTagName('li')
-        [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.add(
-          '-translate-x-1',
-        )
+          .getElementsByTagName('li')
+          [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.add(
+          'transition',
+      )
+      document
+          .getElementsByTagName('li')
+          [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.add(
+          'bg-opacity-50',
+      )
+
     }
 
     const leave = (tip: ITips) => {
@@ -38,11 +44,17 @@ export default defineComponent({
         [
           Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1
         ].classList.remove('bg-gray-300')
+
       document
-        .getElementsByTagName('li')
-        [
-          Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1
-        ].classList.remove('-translate-x-1')
+          .getElementsByTagName('li')
+          [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.remove(
+          'transition',
+      )
+      document
+          .getElementsByTagName('li')
+          [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.remove(
+          'bg-opacity-50',
+      )
     }
 
     const deleteOld = () => {
@@ -50,9 +62,9 @@ export default defineComponent({
       for (let i = 0; i < tipsLi.length; i++) {
         tipsLi[i].id = ''
         document.getElementsByTagName('li')[i].classList.remove('bg-gray-300')
-        document
-          .getElementsByTagName('li')
-          [i].classList.remove('-translate-x-1')
+        document.getElementsByTagName('li')[i].classList.remove('transition')
+        document.getElementsByTagName('li')[i].classList.remove('bg-opacity-50')
+
       }
       return tipsLi
     }
@@ -100,7 +112,7 @@ export default defineComponent({
                 return (
                   <li
                     class={
-                      'font-sans text-lg  p-2 transition duration-200 ease-in-out'
+                      'font-sans text-lg  p-2 transition duration-200 ease-in-out '
                     }
                     onMouseenter={() => {
                       deleteOld()
