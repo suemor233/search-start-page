@@ -5,7 +5,10 @@
 
 @layer components {
     .my-input {
-        @apply border-2 rounded-l-lg box-border p-1 border-white border-opacity-90 w-10/12 focus:shadow-2xl focus:outline-none
+        @apply placeholder-white px-12 w-full max-w-3xl absolute border-2
+        bg-gray-500 border-opacity-80 bg-opacity-50 backdrop-blur-md text-2xl
+        font-sans font-extralight text-white rounded-2xl box-border p-1
+        border-white border-opacity-90 focus:shadow-2xl focus:outline-none
     }
 }
 
