@@ -1,12 +1,4 @@
-import {
-  computed,
-  defineComponent,
-  h,
-  onMounted,
-  reactive,
-  ref,
-  watch,
-} from 'vue'
+import { defineComponent, reactive, ref, watch } from 'vue'
 
 import { Icon } from '@vicons/utils'
 import { getBaiduTip } from '@/api'
@@ -62,30 +54,27 @@ export default defineComponent({
       },
     ]
 
-    const switchSearch = ()=>{
+    const switchSearch = () => {
       switch (search.value) {
         case 'google':
           window.open(
-              `https://www.google.com/search?q=${inputValue.value}`,
-              '_blank',
+            `https://www.google.com/search?q=${inputValue.value}`,
+            '_blank',
           )
           break
         case 'duckduckgo':
-          window.open(
-              `https://duckduckgo.com/?q=${inputValue.value}`,
-              '_blank',
-          )
+          window.open(`https://duckduckgo.com/?q=${inputValue.value}`, '_blank')
           break
         case 'bing':
           window.open(
-              `https://www.bing.com/search?q=${inputValue.value}`,
-              '_blank',
+            `https://www.bing.com/search?q=${inputValue.value}`,
+            '_blank',
           )
           break
         case 'baidu':
           window.open(
-              `https://www.baidu.com/s?wd=${inputValue.value}`,
-              '_blank',
+            `https://www.baidu.com/s?wd=${inputValue.value}`,
+            '_blank',
           )
           break
       }
@@ -94,22 +83,20 @@ export default defineComponent({
     const keydown = (e: KeyboardEvent) => {
       if (e.code === 'Enter') {
         switchSearch()
-    }
-
-
+      }
     }
     return () => (
       <>
         <div
           class={
-            'flex justify-between items-center  relative max-w-3xl justify-start m-auto top-30% animate__animated animate__bounceInDown'
+            'flex justify-between items-center relative lg:max-w-3xl w-10/12  justify-start m-auto top-30% animate__animated animate__bounceInDown'
           }
         >
           <NPopselect v-model:value={search.value} options={options}>
             <Icon size="32" class={'z-10 box-border p-0.5  ml-1'}>
               {search.value === 'google' ? (
                 <svg
-                  class="icon"
+                  class="icon "
                   viewBox="0 0 1024 1024"
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -220,7 +207,7 @@ export default defineComponent({
             placeholder={'请输入内容'}
             onKeydown={(e) => keydown(e)}
             class={
-              'placeholder-white  px-12 w-full max-w-3xl absolute border-2 bg-gray-500 border-opacity-80 bg-opacity-50 backdrop-blur-md text-2xl font-sans font-extralight text-white rounded-2xl box-border p-1 border-white border-opacity-90 focus:shadow-2xl focus:outline-none'
+              'placeholder-white px-12 w-full max-w-3xl absolute border-2 bg-gray-500 border-opacity-80 bg-opacity-50 backdrop-blur-md text-2xl font-sans font-extralight text-white rounded-2xl box-border p-1 border-white border-opacity-90 focus:shadow-2xl focus:outline-none'
             }
           />
           {inputValue.value.length > 0 ? (
@@ -228,7 +215,7 @@ export default defineComponent({
               class={'z-50 flex items-center mr-1 cursor-pointer'}
               onClick={() => {
                 inputValue.value = ''
-                document?.getElementById("myInput")?.focus();
+                document?.getElementById('myInput')?.focus()
               }}
             >
               <Icon color={'#70757A'} size="36">
@@ -250,7 +237,7 @@ export default defineComponent({
               watchStart = false
               inputValue.value = tips
             }}
-            onIsFocus={()=>   emit('isFocus', false)}
+            onIsFocus={() => emit('isFocus', false)}
           />
         </div>
       </>
