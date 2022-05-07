@@ -1,0 +1,37 @@
+.navi-items {
+    margin-top: .5em;
+    display: grid;
+    grid-gap: 2em;
+    text-align: center;
+    font-size: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
+
+}
+
+
+@media screen and (max-width: 768px){
+    .navi-items{
+        grid-gap: 2em 1.5em;
+        grid-template-columns: repeat(auto-fill, minmax(4em, 1fr));
+    }
+}
+
+
+
+.navi-items div a {
+    width: 5em;
+    height: 5em;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+
+
+.navi-items div p {
+    color: white;
+    margin-right: .2em;
+    margin-top: .3em;
+    user-select:none;
+}
+
+

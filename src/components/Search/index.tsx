@@ -9,10 +9,13 @@ import { Close } from '@vicons/ionicons5'
 import Popselect from '@/components/Popselect'
 import { useStorage } from '@vueuse/core'
 import SearchIcon from '@/components/SearchIcon'
+import {useInput} from "@/stores/inputState";
 
 export default defineComponent({
   emits: ['isFocus'],
   setup(props, { emit }) {
+    // TODO 太多flag了,来优化
+    const inputState =  useInput()
     const inputValue = ref<string>('')
     const tips = reactive<ITips[]>([])
     const tipsShow = ref<boolean>(false)
@@ -37,6 +40,10 @@ export default defineComponent({
       if (inputValue.value.length === 0) {
         tipsShow.value = false
       }
+    })
+
+    watch([inputValue,tipsShow], async () => {
+      inputState.showAny = !(inputValue.value && tipsShow.value);
     })
 
     const switchSearch = () => {
@@ -66,7 +73,6 @@ export default defineComponent({
     }
 
     const keydown = (e: KeyboardEvent) => {
-      console.log(e)
       if (e.code === 'Enter') {
         switchSearch()
       }
@@ -75,7 +81,7 @@ export default defineComponent({
       <>
         <div
           class={
-            'flex justify-between items-center relative mt-10 lg:max-w-3xl w-9/12 justify-start  animate__animated animate__bounceInDown'
+            'flex justify-between items-center relative mt-10 w-full justify-start  animate__animated animate__bounceInDown'
           }
         >
           <div
@@ -94,6 +100,7 @@ export default defineComponent({
                 tipsShow.value = false
                 emit('isFocus', false)
               }, 150)
+
             }
             onFocus={() => {
               tipsShow.value = true
@@ -102,6 +109,7 @@ export default defineComponent({
                 emit('isFocus', true)
               }
               firstFocus = true
+              popSelectShow.value = false
             }}
             autofocus
             onInput={() => (watchStart = true)}

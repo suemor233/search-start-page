@@ -7,7 +7,7 @@ export default defineComponent({
         const time = useTimeNow()
         return () => (
             <>
-                    <p class={'text-white text-6xl font-mono select-none '}>{time.value}</p>
+                    <p class={'animate__animated animate__bounceInDown text-white text-center text-6xl font-mono select-none '}>{time.value}</p>
             </>
         );
     }

@@ -1,0 +1,18 @@
+.icon {
+    width: 2em;
+    display: inline-block;
+    height: 100%;
+    line-height: 3em;
+    fill: currentColor;
+    overflow: hidden;
+    color: white;
+    transition: transform .3s;
+    box-sizing: content-box;
+    /*Todo 宽度如何hover */
+
+
+}
+
+.icon:hover {
+    transform: scale(1.3);
+}

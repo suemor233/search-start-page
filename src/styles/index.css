@@ -2,10 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    font-size: 0.75em;
+}
+@media (min-width: 800px) {
+    :root {
+        font-size: 0.875em;
+    }
+}
+@media (min-width: 1200px) {
+    :root {
+        font-size: 1em;
+    }
+}
+.animate__animated.animate__bounceInDown {
+    --animate-duration: .8s;
+}
+
+.animate__animated.animate__fadeIn {
+    --animate-duration: .8s;
+}
+
+.animate__animated.animate__backInDown {
+    --animate-duration: .8s;
+}
+
+
 
 @layer components {
     .my-input {
-        @apply placeholder-white px-12 w-full max-w-3xl absolute border-2
+        @apply placeholder-white px-12 w-full absolute border-2
         bg-gray-500 border-opacity-80 bg-opacity-50 backdrop-blur-md text-2xl
         font-sans font-extralight text-white rounded-2xl box-border p-1
         border-white border-opacity-90 focus:shadow-2xl focus:outline-none
