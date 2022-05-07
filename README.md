@@ -5,6 +5,7 @@
 - Vue3
 - Vite
 - TSX
+- Pinia
 - Tailwindcss
 
 # 开发
