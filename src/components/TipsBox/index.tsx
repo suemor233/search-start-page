@@ -3,7 +3,7 @@ import { ITips } from '@/types/tips'
 import './index.css'
 
 export default defineComponent({
-  emits: ['tipsData', 'selectTips','isFocus'],
+  emits: ['tipsData', 'selectTips', 'isFocus'],
   props: {
     tips: {
       type: Array as PropType<ITips[]>,
@@ -12,7 +12,7 @@ export default defineComponent({
     tipsShow: {
       type: Object as PropType<Ref<boolean>>,
       required: true,
-    }
+    },
   },
   setup(props, { emit }) {
     const { tips, tipsShow } = props
@@ -23,19 +23,8 @@ export default defineComponent({
       document
         .getElementsByTagName('li')
         [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.add(
-          'bg-gray-300',
+          'bg-gray-300','rounded-lg','bg-opacity-50','transition'
         )
-      document
-          .getElementsByTagName('li')
-          [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.add(
-          'transition',
-      )
-      document
-          .getElementsByTagName('li')
-          [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.add(
-          'bg-opacity-50',
-      )
-
     }
 
     const leave = (tip: ITips) => {
@@ -43,28 +32,14 @@ export default defineComponent({
         .getElementsByTagName('li')
         [
           Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1
-        ].classList.remove('bg-gray-300')
-
-      document
-          .getElementsByTagName('li')
-          [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.remove(
-          'transition',
-      )
-      document
-          .getElementsByTagName('li')
-          [Number(tip.sa.substring(tip.sa.indexOf('_') + 1)) - 1].classList.remove(
-          'bg-opacity-50',
-      )
+        ].classList.remove('bg-gray-300','transition','bg-opacity-50','rounded-lg')
     }
 
     const deleteOld = () => {
       const tipsLi = document.getElementsByTagName('li')
       for (let i = 0; i < tipsLi.length; i++) {
         tipsLi[i].id = ''
-        document.getElementsByTagName('li')[i].classList.remove('bg-gray-300')
-        document.getElementsByTagName('li')[i].classList.remove('transition')
-        document.getElementsByTagName('li')[i].classList.remove('bg-opacity-50')
-
+        document.getElementsByTagName('li')[i].classList.remove('bg-gray-300','transition','bg-opacity-50','rounded-lg')
       }
       return tipsLi
     }
@@ -76,18 +51,17 @@ export default defineComponent({
     onMounted(() => {
       document.onkeydown = (e) => {
         if (e.code === 'ArrowUp') {
-          e.preventDefault();
+          e.preventDefault()
           const tipsLi = deleteOld()
           if (selectLi <= 0) {
             selectLi = tipsLi.length - 1
-            tipsLi[selectLi].id = 'keySelect'
           } else {
             selectLi--
-            tipsLi[selectLi].id = 'keySelect'
           }
+          tipsLi[selectLi].id = 'keySelect'
           emit('selectTips', tipsLi[selectLi].innerText)
         } else if (e.code === 'ArrowDown') {
-          e.preventDefault();
+          e.preventDefault()
 
           const tipsLi = deleteOld()
           if (selectLi === tipsLi.length - 1) {
@@ -96,7 +70,7 @@ export default defineComponent({
           selectLi++
           tipsLi[selectLi].id = 'keySelect'
           emit('selectTips', tipsLi[selectLi].innerText)
-        }else if (e.code === 'Escape'){
+        } else if (e.code === 'Escape') {
           setTimeout(() => {
             tipsShow.value = false
             emit('isFocus', false)
@@ -106,10 +80,10 @@ export default defineComponent({
     })
     return () => (
       <>
-        {tips.length > 0 && tipsShow.value ?
+        {tips.length > 0 && tipsShow.value ? (
           <div
             class={
-              'bg-gray-500 w-full rounded-2xl bg-opacity-50 text-white shadow-2xl absolute top-12 animate__animated animate__fadeIn '
+              'p-1.5 bg-gray-500 w-full rounded-2xl bg-opacity-50 text-white shadow-2xl absolute top-12 animate__animated animate__fadeIn '
             }
           >
             <ul>
@@ -117,11 +91,12 @@ export default defineComponent({
                 return (
                   <li
                     class={
-                      'font-sans text-lg  p-2 transition duration-200 ease-in-out '
+                      'font-sans text-lg  p-2 transition duration-200 ease-in-out cursor-pointer'
                     }
                     onMouseenter={() => {
                       deleteOld()
-                      enter(tip)}}
+                      enter(tip)
+                    }}
                     onMouseleave={() => leave(tip)}
                     onClick={() => {
                       emit('tipsData', tip.q)
@@ -135,7 +110,7 @@ export default defineComponent({
               })}
             </ul>
           </div>
-        : null}
+        ) : null}
       </>
     )
   },

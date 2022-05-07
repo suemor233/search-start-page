@@ -1,5 +1,5 @@
 #keySelect{
-    @apply bg-gray-300 transition bg-opacity-50
+    @apply bg-gray-300 transition bg-opacity-50 rounded-lg
 }
 
 

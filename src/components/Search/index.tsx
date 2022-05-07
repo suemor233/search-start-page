@@ -93,7 +93,7 @@ export default defineComponent({
           }
         >
           <NPopselect v-model:value={search.value} options={options} trigger={'click'}>
-            <Icon size="37" class={'z-10 box-border p-0.5 ml-1'}>
+            <Icon size="32" class={'z-10 box-border p-0.5 ml-1 cursor-pointer'}>
               {search.value === 'google' ? (
                 <svg
                   class="icon "
@@ -218,7 +218,7 @@ export default defineComponent({
                 document?.getElementById('myInput')?.focus()
               }}
             >
-              <Icon color={'#70757A'} size="36">
+              <Icon color={'#70757A'} size="32">
                 <Close />
               </Icon>
             </div>
