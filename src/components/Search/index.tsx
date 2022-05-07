@@ -7,6 +7,7 @@ import { ITips } from '@/types/tips'
 import './index.css'
 import { Close } from '@vicons/ionicons5'
 import Popselect from "@/components/Popselect";
+import {useStorage} from "@vueuse/core";
 
 export default defineComponent({
   emits: ['isFocus'],
@@ -18,7 +19,7 @@ export default defineComponent({
     let firstFocus = false
     let watchStart = true
 
-    const search = ref('谷歌')
+    const search = useStorage('MySearch', '谷歌')
     watch(inputValue, async () => {
       if (watchStart) {
         const res = await getBaiduTip({
@@ -36,25 +37,6 @@ export default defineComponent({
         tipsShow.value = false
       }
     })
-
-    const options = [
-      {
-        label: '谷歌',
-        value: 'google',
-      },
-      {
-        label: 'duckduckgo',
-        value: 'duckduckgo',
-      },
-      {
-        label: '必应',
-        value: 'bing',
-      },
-      {
-        label: '百度',
-        value: 'baidu',
-      },
-    ]
 
     const switchSearch = () => {
       switch (search.value) {
