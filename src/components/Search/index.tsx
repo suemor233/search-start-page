@@ -89,10 +89,14 @@ export default defineComponent({
       <>
         <div
           class={
-            'flex justify-between items-center relative lg:max-w-3xl w-10/12 justify-start m-auto top-30% animate__animated animate__bounceInDown'
+            'flex justify-between items-center relative mt-10 lg:max-w-3xl w-10/12 justify-start  animate__animated animate__bounceInDown'
           }
         >
-          <NPopselect v-model:value={search.value} options={options} trigger={'click'}>
+          <NPopselect
+            v-model:value={search.value}
+            options={options}
+            trigger={'click'}
+          >
             <Icon size="32" class={'z-10 box-border p-0.5 ml-1 cursor-pointer'}>
               {search.value === 'google' ? (
                 <svg
@@ -206,9 +210,7 @@ export default defineComponent({
             onInput={() => (watchStart = true)}
             placeholder={'请输入内容'}
             onKeydown={(e) => keydown(e)}
-            class={
-              'my-input'
-            }
+            class={'my-input'}
           />
           {inputValue.value.length > 0 ? (
             <div

@@ -7,9 +7,7 @@ export default defineComponent({
         const time = useTimeNow()
         return () => (
             <>
-                <div class={'absolute left-1/2 -translate-x-1/2 top-18'}>
                     <p class={'text-white text-6xl font-mono select-none '}>{time.value}</p>
-                </div>
             </>
         );
     }

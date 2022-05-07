@@ -83,7 +83,7 @@ export default defineComponent({
         {tips.length > 0 && tipsShow.value ? (
           <div
             class={
-              'p-1.5 bg-gray-500 w-full rounded-2xl bg-opacity-50 text-white shadow-2xl absolute top-12 animate__animated animate__fadeIn '
+              'p-1.5 bg-gray-500 w-full rounded-2xl bg-opacity-50 text-white shadow-2xl absolute top-12 animate__animated animate__fadeIn'
             }
           >
             <ul>
