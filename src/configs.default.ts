@@ -31,8 +31,8 @@ export const NavDefaultConfigs = [
   },
   {
     "name": "哔哩哔哩",
-    "url": "https://juejin.cn",
-    "icon": "icon-juejin",
+    "url": "https://www.bilibili.com/",
+    "icon": "icon-bilibili-line",
     "color": "#00a1d6"
   },
   {
