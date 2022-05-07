@@ -1,7 +1,6 @@
-import {defineComponent, ref, watch} from 'vue'
+import {defineComponent, ref} from 'vue'
 import Search from "@/components/Search";
 import Time from "@/components/Time";
-import {NButton} from "naive-ui";
 import Weather from "@/components/Weather";
 
 export default defineComponent({

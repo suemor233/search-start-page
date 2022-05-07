@@ -1,0 +1,17 @@
+.search-selector{
+    top: 3em;
+    left: .3em;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    transform: scale(1,0);
+    transform-origin: top center;
+    transition: opacity .3s, transform .3s, visibility .3s;
+}
+
+.search-selector.active{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
