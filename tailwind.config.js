@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage:{
-        'main-bk':"url('https://suemor.oss-cn-beijing.aliyuncs.com/img/wallhaven-72kejo.jpeg')"
+        'main-bk':"url('https://suemor.oss-cn-beijing.aliyuncs.com/img/searchBackgroudn.jpeg')"
       },
       spacing:{
         '200':'48rem'
