@@ -66,12 +66,6 @@ export const NavDefaultConfigs = [
     "color": "#4395ff"
   },
   {
-    "name": "百度网盘",
-    "url": "https://pan.baidu.com",
-    "color": "#3b8bfe",
-    "icon": "icon-baiduwangpan"
-  },
-  {
     "name": "Pixiv",
     "url": "https://www.pixiv.net",
     "color": "#0096fa",
@@ -80,7 +74,7 @@ export const NavDefaultConfigs = [
   {
     "name": "V2EX",
     "url": "https://v2ex.com",
-    "color": "#ccc",
+    "color": "#454545",
     "icon": "icon-vex"
   },
   {
@@ -95,5 +89,10 @@ export const NavDefaultConfigs = [
     "color": "#28a8ea",
     "icon": "icon-onedrive"
   },
+  {
+    "name": "自定义",
+    "color": "#b5bdbe",
+    "icon": "icon-tianjia"
+  }
 
 ]
