@@ -1,4 +1,4 @@
-.icon {
+.icon-my {
     width: 2em;
     display: inline-block;
     height: 100%;
@@ -13,6 +13,6 @@
 
 }
 
-.icon:hover {
+.icon-my:hover {
     transform: scale(1.3);
 }

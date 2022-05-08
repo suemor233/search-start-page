@@ -9,7 +9,7 @@ export const NavDefaultConfigs = [
     "name": "Twitter",
     "url": "https://twitter.com",
     "icon": "icon-twitter",
-    "color": "#4395ff"
+    "color": "#1D9BF0"
   },
   {
     "name": "YouTube",

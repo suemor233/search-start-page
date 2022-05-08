@@ -9,7 +9,7 @@ export default defineComponent({
     const id = ref(`#${props.name}`)
     return () => (
       <>
-        <svg class="icon">
+        <svg class="icon-my">
           <use href={id.value} />
         </svg>
 
