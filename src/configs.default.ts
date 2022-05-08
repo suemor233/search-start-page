@@ -56,7 +56,7 @@ export const NavDefaultConfigs = [
   {
     "name": "MDN",
     "url": "https://developer.mozilla.org/zh-CN",
-    "color": "#83d0f2",
+    "color": "#555",
     "icon": "icon-mdn"
   },
   {

@@ -25,3 +25,17 @@ jobs:
           pnpm install
           pnpm run build  # 执行打包
 
+      # 连接到ssh，并且做一个拷贝操作的action
+      - name: Deploy 🚀
+        uses: cross-the-world/scp-pipeline@master
+        env:
+          WELCOME: "ssh scp ssh pipelines"
+          LASTSSH: "Doing something after copying"
+        with:
+          host: ${{ secrets.DR_HOST }}
+          user: ${{ secrets.DR_USER }}
+          pass: ${{ secrets.DR_PASS }}
+          connect_timeout: 10s
+          local: './dist/*' # 这里是下一步要创建的vue项目构建完成后的静态资源路径
+          remote: /www/wwwroot/search.suemor.com # 这里是 step1 中，在服务器上创建用于存放静态资源的文件夹
+
