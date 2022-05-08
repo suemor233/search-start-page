@@ -11,7 +11,7 @@ export default defineComponent({
         return () => (
             <>
                 {
-                    input.showAny ?
+                    (input.showAny && !input.popSelectShow)?
                     <section class={['navi-items animate__animated animate__fadeIn']}>
                         {
                             NavDefaultConfigs.map((item: INavItem) => {

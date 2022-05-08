@@ -19,7 +19,7 @@ export default defineComponent({
     const inputValue = ref<string>('')
     const tips = reactive<ITips[]>([])
     const tipsShow = ref<boolean>(false)
-    const popSelectShow = ref<boolean>(false)
+
     let firstFocus = false
     let watchStart = true
 
@@ -86,7 +86,7 @@ export default defineComponent({
         >
           <div
             class={'z-10 box-border mt-2 ml-1 cursor-pointer'}
-            onClick={() => (popSelectShow.value = !popSelectShow.value)}
+            onClick={() => (inputState.popSelectShow = !inputState.popSelectShow)}
           >
             <SearchIcon search={search} />
           </div>
@@ -109,7 +109,7 @@ export default defineComponent({
                 emit('isFocus', true)
               }
               firstFocus = true
-              popSelectShow.value = false
+              inputState.popSelectShow = false
             }}
             autofocus
             onInput={() => (watchStart = true)}
@@ -132,11 +132,11 @@ export default defineComponent({
           ) : (
             ''
           )}
-          <div class={['search-selector', popSelectShow.value ? 'active' : '']}>
+          <div class={['search-selector', inputState.popSelectShow ? 'active' : '']}>
             <Popselect
               onSearch={(isSearch) => {
                 search.value = isSearch
-                popSelectShow.value = false
+                inputState.popSelectShow = false
               }}
             />
           </div>
