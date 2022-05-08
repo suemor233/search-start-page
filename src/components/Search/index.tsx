@@ -85,7 +85,7 @@ export default defineComponent({
           }
         >
           <div
-            class={'z-10 box-border mt-2 ml-1 cursor-pointer'}
+            class={'z-10 box-border mt-2 ml-2 cursor-pointer'}
             onClick={() => (inputState.popSelectShow = !inputState.popSelectShow)}
           >
             <SearchIcon search={search} />
@@ -141,20 +141,20 @@ export default defineComponent({
             />
           </div>
 
-          <TipsBox
-            tips={tips}
-            tipsShow={tipsShow}
-            onTipsData={(tips: string) => {
-              inputValue.value = tips
-              switchSearch()
-            }}
-            onSelectTips={(tips: string) => {
-              watchStart = false
-              inputValue.value = tips
-            }}
-            onIsFocus={() => emit('isFocus', false)}
-          />
-        </div>
+            <TipsBox
+                tips={tips}
+                tipsShow={tipsShow}
+                onTipsData={(tips: string) => {
+                  inputValue.value = tips
+                  switchSearch()
+                }}
+                onSelectTips={(tips: string) => {
+                  watchStart = false
+                  inputValue.value = tips
+                }}
+                onIsFocus={() => emit('isFocus', false)}
+            />
+          </div>
       </>
     )
   },

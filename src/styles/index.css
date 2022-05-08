@@ -16,15 +16,15 @@
     }
 }
 .animate__animated.animate__bounceInDown {
-    --animate-duration: .8s;
+    --animate-duration: .6s;
 }
 
 .animate__animated.animate__fadeIn {
-    --animate-duration: .8s;
+    --animate-duration: .6s;
 }
 
 .animate__animated.animate__backInDown {
-    --animate-duration: .8s;
+    --animate-duration: .6s;
 }
 
 

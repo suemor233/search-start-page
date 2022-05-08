@@ -110,7 +110,7 @@ export default defineComponent({
               })}
             </ul>
           </div>
-        ) : null}
+        ) : ''}
       </>
     )
   },
