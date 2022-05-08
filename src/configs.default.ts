@@ -1,6 +1,6 @@
 export const NavDefaultConfigs = [
   {
-    "name": "GitHub",
+    "name": "gitHub",
     "url": "https://github.com",
     "icon": "icon-github-fill",
     "color": "#555"
