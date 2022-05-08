@@ -23,4 +23,7 @@ pnpm dev
 <img src="https://github.com/Elmge/search-start-page/blob/master/images/image4.jpg" width="1000" alt="搜索" />
 </p>
 
+# Reference
+项目参考了 [KStart](https://github.com/Dreamer-Paul/KStart)
+
 
