@@ -11,15 +11,8 @@ export default defineComponent({
   setup(props, ctx) {
     const input = useInput()
     const navData = useNavList()
-    const modelShow = ref<boolean>(false)
-    const formRef = ref<FormInst | null>(null)
     const toast = useMessage()
-    let inputValue = reactive<INavItem>({
-      name: '',
-      url: '',
-      icon: '',
-      color: '',
-    })
+
     const handleAdd = (name: string) => {
       if (name === '自定义') {
         toast.info('抱歉目前暂不支持自定义，如需自定义请提交 issues',  { duration: 5000 })
